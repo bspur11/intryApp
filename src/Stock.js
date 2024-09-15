@@ -16,4 +16,4 @@ class Stock {
   }
 }
 
-module.exports = Stock;
+export default Stock;
