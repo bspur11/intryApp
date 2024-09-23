@@ -17,7 +17,7 @@ recieved.newStock();
 // const axios = require('axios');
 
 async function getPost() {
-  const res = await axios.get('https://jsonplaceholder.typicode.com/todos/15');
+  const res = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
   console.log(res.data);
 }
 getPost();
