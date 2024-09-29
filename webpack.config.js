@@ -1,16 +1,16 @@
-const historyApiFallback = require('connect-history-api-fallback');
-const path = require('path');
+import historyApiFallback from 'connect-history-api-fallback';
+import path from 'path';
 
-module.exports = {
+export default {
   mode: 'development',
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(process.cwd(), 'dist'),
     filename: 'bundle.js',
   },
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'dist'),
+      directory: path.resolve(process.cwd(), 'dist'),
     },
     port: 3000,
     open: true,

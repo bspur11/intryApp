@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "INventory App",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve"
@@ -25,6 +26,7 @@
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "babel-loader": "^9.1.3",
+    "concurrently": "^9.0.1",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.0",
     "nodemon": "^3.1.4",

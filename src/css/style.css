@@ -1,6 +1,70 @@
 body {
-  background: purple;
+  background: rgb(0, 2, 54);
   color: white;
+  display: flex; /* Make the body a flex container */
+  flex-direction: column; /* Align children vertically */
+  align-items: center;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25vh;
+  width: 100%; /* Full width for the header */
+}
 
+.container {
+  background: rgb(7, 245, 241);
+  display: flex;
+  align-items: center; /* Centers items vertically */
+  justify-content: space-around; /* Aligns items across the row */
+  height: 30vh;
+  width: 100vw;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.item {
+  display: flex;
+  width: 20vw; /* Use relative width for responsiveness */
+  max-width: 100px; /* Limit the max width */
+  height: 20vw; /* Use relative height */
+  max-height: 100px; /* Limit the max height */
+  align-items: center; /* Centers items vertically */
+  justify-content: center; /* Center the background image */
+  margin: 10px; /* Add some margin for spacing */
+}
+
+@media (max-width: 600px) {
+  .item {
+    width: 30vw; /* Make items larger on smaller screens */
+    height: 30vw;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center; /* Centers items vertically */
+  justify-content: center; /* Centers the background image */
+  width: 100px; /* Set a base width */
+  height: 100px; /* Set a base height */
+}
+
+#paper {
+  background: url('https://cdn1.iconfinder.com/data/icons/office-222/91/General_Office_61-512.png');
+}
+
+#ink {
+  background: url('https://cdn3.iconfinder.com/data/icons/cmyk-product-development/128/cmyk-06-256.png');
+}
+
+#suplies {
+  background: url('https://cdn2.iconfinder.com/data/icons/homeless-10/50/supplies-256.png');
+}
+
+#paper,
+#ink,
+#suplies {
+  background-size: cover; /* Adjust background to fit within the item */
+  background-repeat: no-repeat; /* Prevent background from repeating */
+}
