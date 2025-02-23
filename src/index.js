@@ -1,5 +1,5 @@
 import Stock from './Stock.js';
-import './css/style.css';
+import '../css/style.css';
 
 const recieved = new Stock(
   'tango',
