@@ -1,4 +1,4 @@
-import './css/style.css'; // Correct path based on your structure
+import '../css/style.css'; // Correct path based on your structure
 
 class Stock {
   constructor(brand, shipco, cal, type, size, pak, amount, skids) {
