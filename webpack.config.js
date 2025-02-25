@@ -1,6 +1,10 @@
 import historyApiFallback from 'connect-history-api-fallback';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import browserifyZlib from 'browserify-zlib';
+import asyncHooks from 'async_hooks';
+import CompressionPlugin from 'compression-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 export default {
   mode: 'development',
@@ -18,14 +22,35 @@ export default {
     static: {
       directory: path.resolve(process.cwd(), 'dist'),
     },
-    port: 3000,
+    port: 3001,
     open: true,
     hot: true,
     compress: true,
     historyApiFallback: true,
   },
   optimization: {
-    minimize: false,
+    minimize: true,
+    splitChunks: {
+      chunks: 'all', // Split all chunks (including vendor and app code)
+    },
+    minimize: true, // Ensure minification in production mode
+  },
+  resolve: {
+    fallback: {
+      vm: 'vm-browserify', // Polyfill for vm module
+      path: 'path-browserify', // Polyfill for path module
+      stream: 'stream-browserify', // Polyfill for stream module
+      crypto: 'crypto-browserify', // Polyfill for crypto module
+      url: 'url/', // Polyfill for url module
+      querystring: 'querystring-es3', // Polyfill for querystring module
+      buffer: 'buffer/', // Polyfill for buffer module
+      fs: false, // fs is typically not needed in the browser
+      http: 'stream-http', // Polyfill for http module
+      net: false, // Not needed for frontend
+      zlib: 'browserify-zlib', // Correct polyfill for zlib
+      async_hooks: false, // Set to false if async_hooks is not needed
+      assert: 'assert/',
+    },
   },
 
   module: {
@@ -47,8 +72,11 @@ export default {
     ],
   },
   plugins: [
+    new BundleAnalyzerPlugin({
+      openAnalyzer: true,
+    }),
     new HtmlWebpackPlugin({
-      template: './dist/index.html', // Template for index.html
+      template: './src/index.html', // Template for index.html
       filename: 'index.html', // Output file in dist
       chunks: ['index'], // Only include the index.js bundle
     }),
@@ -66,6 +94,10 @@ export default {
       template: './src/paper.html', // Template for page4.html
       filename: 'paper.html', // Output file in dist
       chunks: ['paper'], // Only include the page4.js bundle
+    }),
+    new CompressionPlugin({
+      test: /\.(js|css)$/, // Compress JS and CSS files
+      threshold: 8192, // Only files bigger than 8KB are compressed
     }),
   ],
   stats: 'errors-warnings',

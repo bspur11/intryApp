@@ -1,23 +1,23 @@
-import Stock from './Stock.js';
-import '../css/style.css';
+// import express from 'express';
+// import connectDB from '../config/db.js'
+// import Item from '../models/item.js'   
 
-const recieved = new Stock(
-  'tango',
-  'Ariva',
-  0.018,
-  'glossc2s',
-  '23/35',
-  'loose',
-  23000,
-  8
-);
+// const app = express();
+// const PORT = process.env.PORT || 3000;
 
-recieved.newStock();
+// // Connect to MongoDB
+// connectDB();
 
-// const axios = require('axios');
+// // Example endpoint to fetch all items from the inventory
+// app.get('/items', async (req, res) => {
+//   try {
+//     const items = await Item.find();  // Fetch items from the MongoDB collection
+//     res.json(items);
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// });
 
-async function getPost() {
-  const res = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
-  console.log(res.data);
-}
-getPost();
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
